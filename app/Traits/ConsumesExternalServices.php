@@ -26,6 +26,6 @@ trait ConsumesExternalServices {
             $response = $this->decodeResponse($response);
         }
 
-        dd($response);
+        return $response;
     }
 }
