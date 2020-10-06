@@ -21,6 +21,7 @@ class PaymentController extends Controller {
             'currency' => 'required|exists:App\Models\Currency,iso',
             'payment_platform' => 'required|exists:App\Models\PaymentPlatform,id'
         ];
+        // dd($request->all());
         $request->validate($rules);
         $paymentPlatform = $this->paymentPlatformResolver->resolveService($request->payment_platform);
         session()->put('paymentPlatformId', $request->payment_platform);
@@ -30,7 +31,6 @@ class PaymentController extends Controller {
     public function approval() {
         if (session()->has('paymentPlatformId')) {
             $paymentPlatform = $this->paymentPlatformResolver->resolveService(session()->get('paymentPlatformId'));
-            $paymentPlatform = resolve(PayPalService::class);
             return $paymentPlatform->handleApproval();
         }
         return redirect()
