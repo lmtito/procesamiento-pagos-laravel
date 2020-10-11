@@ -13,7 +13,7 @@
                         <div class="row">
                             <div class="col-auto">
                                 <label>¿Cuánto desea pagar?</label>
-                                <input type="number" min="5" step="0.01" class="form-control" name="value" value="{{ mt_rand(500, 100000) / 100 }}" required>
+                                <input type="number" min="5" step="0.01" class="form-control" id="value" name="value" value="{{ mt_rand(500, 100000) / 100 }}" required>
                                 <small class="form-text text-muted">
                                     Utilice valores con 2 cifras decimales separadas por punto.
                                 </small>
